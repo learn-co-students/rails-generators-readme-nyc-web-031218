@@ -13,8 +13,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params)
+    if @post.valid?
     @post.save
     redirect_to post_path(@post)
+  else
+      render :new
+    end
   end
 
   def update
